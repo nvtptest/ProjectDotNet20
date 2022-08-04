@@ -31,7 +31,6 @@ namespace ProjectDotNet20
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCallAPI = new System.Windows.Forms.TabPage();
-            this.tabPageToken = new System.Windows.Forms.TabPage();
             this.lblBody = new System.Windows.Forms.Label();
             this.txtBody = new System.Windows.Forms.TextBox();
             this.txtResponse = new System.Windows.Forms.TextBox();
@@ -45,14 +44,15 @@ namespace ProjectDotNet20
             this.lblURL = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblSerialNo = new System.Windows.Forms.Label();
-            this.txtSerialNo = new System.Windows.Forms.TextBox();
-            this.btnGetBase64Cert = new System.Windows.Forms.Button();
-            this.txtBase64Cert = new System.Windows.Forms.TextBox();
-            this.lblDataToSign = new System.Windows.Forms.Label();
-            this.txtDataToSign = new System.Windows.Forms.TextBox();
+            this.tabPageToken = new System.Windows.Forms.TabPage();
             this.txtDataSigned = new System.Windows.Forms.TextBox();
             this.btnSignData = new System.Windows.Forms.Button();
+            this.lblDataToSign = new System.Windows.Forms.Label();
+            this.txtDataToSign = new System.Windows.Forms.TextBox();
+            this.txtBase64Cert = new System.Windows.Forms.TextBox();
+            this.btnGetBase64Cert = new System.Windows.Forms.Button();
+            this.txtSerialNo = new System.Windows.Forms.TextBox();
+            this.lblSerialNo = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabCallAPI.SuspendLayout();
             this.tabPageToken.SuspendLayout();
@@ -91,24 +91,6 @@ namespace ProjectDotNet20
             this.tabCallAPI.TabIndex = 0;
             this.tabCallAPI.Text = "CallAPI";
             this.tabCallAPI.UseVisualStyleBackColor = true;
-            // 
-            // tabPageToken
-            // 
-            this.tabPageToken.Controls.Add(this.txtDataSigned);
-            this.tabPageToken.Controls.Add(this.btnSignData);
-            this.tabPageToken.Controls.Add(this.lblDataToSign);
-            this.tabPageToken.Controls.Add(this.txtDataToSign);
-            this.tabPageToken.Controls.Add(this.txtBase64Cert);
-            this.tabPageToken.Controls.Add(this.btnGetBase64Cert);
-            this.tabPageToken.Controls.Add(this.txtSerialNo);
-            this.tabPageToken.Controls.Add(this.lblSerialNo);
-            this.tabPageToken.Location = new System.Drawing.Point(4, 22);
-            this.tabPageToken.Name = "tabPageToken";
-            this.tabPageToken.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageToken.Size = new System.Drawing.Size(803, 654);
-            this.tabPageToken.TabIndex = 1;
-            this.tabPageToken.Text = "Token";
-            this.tabPageToken.UseVisualStyleBackColor = true;
             // 
             // lblBody
             // 
@@ -220,59 +202,25 @@ namespace ProjectDotNet20
             this.button1.TabIndex = 14;
             this.button1.Text = "SendRequest";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // lblSerialNo
+            // tabPageToken
             // 
-            this.lblSerialNo.AutoSize = true;
-            this.lblSerialNo.Location = new System.Drawing.Point(17, 16);
-            this.lblSerialNo.Name = "lblSerialNo";
-            this.lblSerialNo.Size = new System.Drawing.Size(47, 13);
-            this.lblSerialNo.TabIndex = 17;
-            this.lblSerialNo.Text = "SerialNo";
-            // 
-            // txtSerialNo
-            // 
-            this.txtSerialNo.Location = new System.Drawing.Point(100, 13);
-            this.txtSerialNo.Name = "txtSerialNo";
-            this.txtSerialNo.Size = new System.Drawing.Size(695, 20);
-            this.txtSerialNo.TabIndex = 18;
-            // 
-            // btnGetBase64Cert
-            // 
-            this.btnGetBase64Cert.Location = new System.Drawing.Point(20, 51);
-            this.btnGetBase64Cert.Name = "btnGetBase64Cert";
-            this.btnGetBase64Cert.Size = new System.Drawing.Size(75, 52);
-            this.btnGetBase64Cert.TabIndex = 19;
-            this.btnGetBase64Cert.Text = "Get Base64 Cert";
-            this.btnGetBase64Cert.UseVisualStyleBackColor = true;
-            this.btnGetBase64Cert.Click += new System.EventHandler(this.btnGetBase64Cert_Click);
-            // 
-            // txtBase64Cert
-            // 
-            this.txtBase64Cert.Location = new System.Drawing.Point(100, 51);
-            this.txtBase64Cert.Multiline = true;
-            this.txtBase64Cert.Name = "txtBase64Cert";
-            this.txtBase64Cert.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBase64Cert.Size = new System.Drawing.Size(692, 121);
-            this.txtBase64Cert.TabIndex = 26;
-            // 
-            // lblDataToSign
-            // 
-            this.lblDataToSign.AutoSize = true;
-            this.lblDataToSign.Location = new System.Drawing.Point(26, 178);
-            this.lblDataToSign.Name = "lblDataToSign";
-            this.lblDataToSign.Size = new System.Drawing.Size(64, 13);
-            this.lblDataToSign.TabIndex = 28;
-            this.lblDataToSign.Text = "DataToSign";
-            // 
-            // txtDataToSign
-            // 
-            this.txtDataToSign.Location = new System.Drawing.Point(100, 178);
-            this.txtDataToSign.Multiline = true;
-            this.txtDataToSign.Name = "txtDataToSign";
-            this.txtDataToSign.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDataToSign.Size = new System.Drawing.Size(692, 129);
-            this.txtDataToSign.TabIndex = 27;
+            this.tabPageToken.Controls.Add(this.txtDataSigned);
+            this.tabPageToken.Controls.Add(this.btnSignData);
+            this.tabPageToken.Controls.Add(this.lblDataToSign);
+            this.tabPageToken.Controls.Add(this.txtDataToSign);
+            this.tabPageToken.Controls.Add(this.txtBase64Cert);
+            this.tabPageToken.Controls.Add(this.btnGetBase64Cert);
+            this.tabPageToken.Controls.Add(this.txtSerialNo);
+            this.tabPageToken.Controls.Add(this.lblSerialNo);
+            this.tabPageToken.Location = new System.Drawing.Point(4, 22);
+            this.tabPageToken.Name = "tabPageToken";
+            this.tabPageToken.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageToken.Size = new System.Drawing.Size(803, 654);
+            this.tabPageToken.TabIndex = 1;
+            this.tabPageToken.Text = "Token";
+            this.tabPageToken.UseVisualStyleBackColor = true;
             // 
             // txtDataSigned
             // 
@@ -292,6 +240,59 @@ namespace ProjectDotNet20
             this.btnSignData.Text = "Get Base64 Cert";
             this.btnSignData.UseVisualStyleBackColor = true;
             this.btnSignData.Click += new System.EventHandler(this.btnSignData_Click);
+            // 
+            // lblDataToSign
+            // 
+            this.lblDataToSign.AutoSize = true;
+            this.lblDataToSign.Location = new System.Drawing.Point(26, 178);
+            this.lblDataToSign.Name = "lblDataToSign";
+            this.lblDataToSign.Size = new System.Drawing.Size(64, 13);
+            this.lblDataToSign.TabIndex = 28;
+            this.lblDataToSign.Text = "DataToSign";
+            // 
+            // txtDataToSign
+            // 
+            this.txtDataToSign.Location = new System.Drawing.Point(100, 178);
+            this.txtDataToSign.Multiline = true;
+            this.txtDataToSign.Name = "txtDataToSign";
+            this.txtDataToSign.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDataToSign.Size = new System.Drawing.Size(692, 129);
+            this.txtDataToSign.TabIndex = 27;
+            // 
+            // txtBase64Cert
+            // 
+            this.txtBase64Cert.Location = new System.Drawing.Point(100, 51);
+            this.txtBase64Cert.Multiline = true;
+            this.txtBase64Cert.Name = "txtBase64Cert";
+            this.txtBase64Cert.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtBase64Cert.Size = new System.Drawing.Size(692, 121);
+            this.txtBase64Cert.TabIndex = 26;
+            // 
+            // btnGetBase64Cert
+            // 
+            this.btnGetBase64Cert.Location = new System.Drawing.Point(20, 51);
+            this.btnGetBase64Cert.Name = "btnGetBase64Cert";
+            this.btnGetBase64Cert.Size = new System.Drawing.Size(75, 52);
+            this.btnGetBase64Cert.TabIndex = 19;
+            this.btnGetBase64Cert.Text = "Get Base64 Cert";
+            this.btnGetBase64Cert.UseVisualStyleBackColor = true;
+            this.btnGetBase64Cert.Click += new System.EventHandler(this.btnGetBase64Cert_Click);
+            // 
+            // txtSerialNo
+            // 
+            this.txtSerialNo.Location = new System.Drawing.Point(100, 13);
+            this.txtSerialNo.Name = "txtSerialNo";
+            this.txtSerialNo.Size = new System.Drawing.Size(695, 20);
+            this.txtSerialNo.TabIndex = 18;
+            // 
+            // lblSerialNo
+            // 
+            this.lblSerialNo.AutoSize = true;
+            this.lblSerialNo.Location = new System.Drawing.Point(17, 16);
+            this.lblSerialNo.Name = "lblSerialNo";
+            this.lblSerialNo.Size = new System.Drawing.Size(47, 13);
+            this.lblSerialNo.TabIndex = 17;
+            this.lblSerialNo.Text = "SerialNo";
             // 
             // Form1
             // 

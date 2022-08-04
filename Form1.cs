@@ -20,25 +20,6 @@ namespace ProjectDotNet20
             txtBody.Text = "{\"username\": \"0900234699\",\"password\": \"123456aA@\"}";
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("ERR_Protocols: " + ex.Message);
-            }
-
-            string pzResponse = "";
-
-            Utilities.webRequest2(txtUrl.Text, txtBody.Text, "", txtHeader.Text,
-                        txtContentType.Text, txtMethod.Text, chkGetByte.Checked, out pzResponse);
-
-            txtResponse.Text = pzResponse;
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -66,6 +47,25 @@ namespace ProjectDotNet20
             {
                 txtDataSigned.Text = ex.Message;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ERR_Protocols: " + ex.Message);
+            }
+
+            string pzResponse = "";
+
+            Utilities.webRequest2(txtUrl.Text, txtBody.Text, "", txtHeader.Text,
+                        txtContentType.Text, txtMethod.Text, chkGetByte.Checked, out pzResponse);
+
+            txtResponse.Text = pzResponse;
         }
     }
 }

@@ -7,4 +7,3 @@ D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.CoreCompileIn
 D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.exe
 D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.pdb
 D:\Bravo\EInvoice\ProjectDotNet20\bin\Debug\ProjectDotNet20.exe.config
-D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.csprojAssemblyReference.cache
