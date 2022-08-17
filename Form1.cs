@@ -22,6 +22,8 @@ namespace ProjectDotNet20
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            string[] listCryptType = {"SHA1", "SHA256" };
+            this.cboCryptoType.DataSource = listCryptType;
 
         }
 
@@ -66,6 +68,18 @@ namespace ProjectDotNet20
                         txtContentType.Text, txtMethod.Text, chkGetByte.Checked, out pzResponse);
 
             txtResponse.Text = pzResponse;
+        }
+
+        private void btnSignString_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                txtDataSigned.Text = Utilities.signHashString(txtDataToSign.Text, txtSerialNo.Text, this.cboCryptoType.SelectedItem.ToString());
+            }
+            catch (Exception ex)
+            {
+                txtDataSigned.Text = ex.Message;
+            }
         }
     }
 }

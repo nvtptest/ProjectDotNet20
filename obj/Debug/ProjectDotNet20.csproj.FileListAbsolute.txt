@@ -7,3 +7,14 @@ D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.CoreCompileIn
 D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.exe
 D:\Bravo\EInvoice\ProjectDotNet20\obj\Debug\ProjectDotNet20.pdb
 D:\Bravo\EInvoice\ProjectDotNet20\bin\Debug\ProjectDotNet20.exe.config
+D:\zProject_DotNet\ProjectDotNet20\bin\Debug\ProjectDotNet20.exe.config
+D:\zProject_DotNet\ProjectDotNet20\bin\Debug\ProjectDotNet20.exe
+D:\zProject_DotNet\ProjectDotNet20\bin\Debug\ProjectDotNet20.pdb
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.AssemblyReference.cache
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.Form1.resources
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.Properties.Resources.resources
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.GenerateResource.cache
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.CoreCompileInputs.cache
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.exe
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.pdb
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.SuggestedBindingRedirects.cache

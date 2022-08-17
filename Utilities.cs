@@ -220,5 +220,50 @@ namespace ProjectDotNet20
 
             return _zResult;
         }
+
+        public static string signHashString(string pzStringValue, string pzSerial, string cryptType)
+        {
+            var _zResult = string.Empty;
+            try
+            {
+                RSACryptoServiceProvider _rSACryptoServiceProvider = null;
+
+                var _x509Store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
+                _x509Store.Open(OpenFlags.ReadOnly);
+
+                var _enumerator = _x509Store.Certificates.GetEnumerator();
+                while (_enumerator.MoveNext())
+                {
+                    var _current = _enumerator.Current;
+                    if (_current.GetSerialNumberString().ToUpper() == pzSerial.ToUpper())
+                    {
+                        _rSACryptoServiceProvider = (RSACryptoServiceProvider)_current.PrivateKey;
+                        if (_rSACryptoServiceProvider == null)
+                            return "ERR:-2";
+
+                        break;
+                    }
+                }
+
+                byte[] rgbHash = Encoding.ASCII.GetBytes(pzStringValue);
+
+
+                var _zText = Convert.ToBase64String(_rSACryptoServiceProvider.SignData(rgbHash, CryptoConfig.CreateFromName(cryptType)));
+
+                _x509Store.Close();
+
+                _zResult = _zText;
+            }
+            catch (Exception _ex)
+            {
+                //if (_ex.Message.Contains("cancelled by the user"))
+                //    _zResult = "ERR:-1";
+                //else
+                //    _zResult = "ERR:-3 " + _ex;
+                throw _ex;
+            }
+
+            return _zResult;
+        }
     }
 }
