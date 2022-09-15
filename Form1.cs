@@ -17,7 +17,8 @@ namespace ProjectDotNet20
             txtUrl.Text = "https://api-vinvoice.viettel.vn/auth/login";
             txtContentType.Text = "application/json";
             txtMethod.Text = "POST";
-            txtBody.Text = "{\"username\": \"0900234699\",\"password\": \"123456aA@\"}";
+            txtBody.Text = "{\"username\": \"0100109106-999\",\"password\": \"123456a@A\"}";
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -53,6 +54,13 @@ namespace ProjectDotNet20
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            //string pzResponse = "";
+            //Utilities.webRequest2("http://192.168.1.211:8080/send"
+            //    , "start_date=2022-08-02&end_date=2022-08-02", "", "", "multipart/form-data;"
+            //    , "POST", false, out pzResponse
+            //    );
+            //txtResponse.Text = pzResponse;
+            //return;
             try
             {
                 ServicePointManager.SecurityProtocol = (SecurityProtocolType)(0xc0 | 0x300 | 0xc00);

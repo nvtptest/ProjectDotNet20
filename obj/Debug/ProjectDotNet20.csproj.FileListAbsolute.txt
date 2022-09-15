@@ -17,4 +17,4 @@ D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.GenerateReso
 D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.CoreCompileInputs.cache
 D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.exe
 D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.pdb
-D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.csproj.SuggestedBindingRedirects.cache
+D:\zProject_DotNet\ProjectDotNet20\obj\Debug\ProjectDotNet20.Form2.resources

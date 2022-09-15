@@ -45,8 +45,19 @@ namespace ProjectDotNet20
                 _rq.Method = pzMethod;
                 _rq.Timeout = 300000;
 
+                string boundary = "----------------------------" + DateTime.Now.Ticks.ToString("x");
+
                 if (!string.IsNullOrEmpty(pzContentType))
-                    _rq.ContentType = pzContentType;
+                {
+                    if(pzContentType.Contains("multipart/form-data"))
+                    {
+                        _rq.ContentType = "multipart/form-data; boundary=" + boundary;
+                    }
+                    else
+                    {
+                        _rq.ContentType = pzContentType;
+                    }
+                }
 
                 if (!string.IsNullOrEmpty(pzAuthorization))
                     _rq.Headers.Add(pzAuthorization);
@@ -72,13 +83,48 @@ namespace ProjectDotNet20
 
                 if (!string.IsNullOrEmpty(pzBody))
                 {
-                    var _buffer = Encoding.UTF8.GetBytes(pzBody);
-                    _rq.ContentLength = _buffer.Length;
-
-                    using (var rs = _rq.GetRequestStream())
+                    if (pzContentType.Contains("multipart/form-data"))
                     {
-                        rs.Write(_buffer, 0, _buffer.Length);
-                        rs.Close();
+                        byte[] boundarybytes = Encoding.UTF8.GetBytes("--" + boundary + "\r\n");
+                        /// the last boundary.
+                        byte[] trailer = Encoding.UTF8.GetBytes("\r\n--" + boundary + "--\r\n");
+                        /// the form data, properly formatted
+                        string formdataTemplate = " ; name=\"{0}\"\r\n\r\n{1}";
+                        /// Added to track if we need a CRLF or not.
+                        bool bNeedsCRLF = false;
+
+                        Dictionary<string, object> postParameters = new Dictionary<string, object>();
+                        //pzBody truyền vào dạng: key1=value1&key2=value2
+                        foreach (string _data in pzBody.Split('&'))
+                        {
+                            string _key = _data.Split('=')[0];
+                            string _value = _data.Split('=')[1];
+
+                            postParameters.Add(_key, _value);
+                        }
+
+                        byte[] formData = GetMultipartFormData(postParameters, boundary);
+                        string z123result = System.Text.Encoding.UTF8.GetString(formData);
+
+
+                        _rq.ContentLength = formData.Length;
+
+                        using (var rs = _rq.GetRequestStream())
+                        {
+                            rs.Write(formData, 0, formData.Length);
+                            rs.Close();
+                        }
+                    }
+                    else
+                    {
+                        var _buffer = Encoding.UTF8.GetBytes(pzBody);
+                        _rq.ContentLength = _buffer.Length;
+
+                        using (var rs = _rq.GetRequestStream())
+                        {
+                            rs.Write(_buffer, 0, _buffer.Length);
+                            rs.Close();
+                        }
                     }
                 }
                 else
@@ -220,6 +266,60 @@ namespace ProjectDotNet20
 
             return _zResult;
         }
+
+        public static byte[] GetMultipartFormData(Dictionary<string, object> postParameters, string boundary)
+        {
+            Stream formDataStream = new System.IO.MemoryStream();
+            bool needsCLRF = false;
+
+            foreach (var param in postParameters)
+            {
+                // Thanks to feedback from commenters, add a CRLF to allow multiple parameters to be added.
+                // Skip it on the first parameter, add it to subsequent parameters.
+                if (needsCLRF)
+                    formDataStream.Write(Encoding.UTF8.GetBytes("\r\n"), 0, Encoding.UTF8.GetByteCount("\r\n"));
+
+                needsCLRF = true;
+
+                //if (param.Value is FileParameter)
+                //{
+                //    FileParameter fileToUpload = (FileParameter)param.Value;
+
+                //    // Add just the first part of this param, since we will write the file data directly to the Stream
+                //    string header = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{2}\"\r\nContent-Type: {3}\r\n\r\n",
+                //        boundary,
+                //        param.Key,
+                //        fileToUpload.FileName ?? param.Key,
+                //        fileToUpload.ContentType ?? "application/octet-stream");
+
+                //    formDataStream.Write(encoding.GetBytes(header), , encoding.GetByteCount(header));
+
+                //    // Write the file data directly to the Stream, rather than serializing it to a string.
+                //    formDataStream.Write(fileToUpload.File, , fileToUpload.File.Length);
+                //}
+                //else
+                {
+                    string postData = string.Format("--{0}\r\nContent-Disposition: form-data; name=\"{1}\"\r\n\r\n{2}",
+                    boundary,
+                    param.Key,
+                    param.Value);
+                    formDataStream.Write(Encoding.UTF8.GetBytes(postData), 0, Encoding.UTF8.GetByteCount(postData));
+                }
+            }
+
+            // Add the end of the request.  Start with a newline
+            string footer = "\r\n--" + boundary + "--\r\n";
+            formDataStream.Write(Encoding.UTF8.GetBytes(footer), 0, Encoding.UTF8.GetByteCount(footer));
+
+            // Dump the Stream into a byte[]
+            formDataStream.Position = 0;
+            byte[] formData = new byte[formDataStream.Length];
+            formDataStream.Read(formData, 0, formData.Length);
+            formDataStream.Close();
+
+            return formData;
+        }
+
 
         public static string signHashString(string pzStringValue, string pzSerial, string cryptType)
         {
