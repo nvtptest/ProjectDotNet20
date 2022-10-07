@@ -33,6 +33,9 @@
             this.txtResult = new System.Windows.Forms.TextBox();
             this.btnBinaryToFile = new System.Windows.Forms.Button();
             this.txtFileName = new System.Windows.Forms.TextBox();
+            this.btnFileTextToDll = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -51,11 +54,11 @@
             // 
             // txtResult
             // 
-            this.txtResult.Location = new System.Drawing.Point(13, 42);
+            this.txtResult.Location = new System.Drawing.Point(13, 64);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(775, 396);
+            this.txtResult.Size = new System.Drawing.Size(775, 374);
             this.txtResult.TabIndex = 1;
             // 
             // btnBinaryToFile
@@ -70,16 +73,47 @@
             // 
             // txtFileName
             // 
-            this.txtFileName.Location = new System.Drawing.Point(431, 12);
+            this.txtFileName.Location = new System.Drawing.Point(573, 12);
             this.txtFileName.Name = "txtFileName";
             this.txtFileName.Size = new System.Drawing.Size(215, 22);
             this.txtFileName.TabIndex = 3;
+            // 
+            // btnFileTextToDll
+            // 
+            this.btnFileTextToDll.Location = new System.Drawing.Point(13, 35);
+            this.btnFileTextToDll.Name = "btnFileTextToDll";
+            this.btnFileTextToDll.Size = new System.Drawing.Size(159, 23);
+            this.btnFileTextToDll.TabIndex = 4;
+            this.btnFileTextToDll.Text = "File txt binary to DLL";
+            this.btnFileTextToDll.UseVisualStyleBackColor = true;
+            this.btnFileTextToDll.Click += new System.EventHandler(this.btnFileTextToDll_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(178, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(266, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "File txt chứa text binary và đẩy vào Path DLL";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(506, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 16);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Path DLL";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnFileTextToDll);
             this.Controls.Add(this.txtFileName);
             this.Controls.Add(this.btnBinaryToFile);
             this.Controls.Add(this.txtResult);
@@ -98,5 +132,8 @@
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Button btnBinaryToFile;
         private System.Windows.Forms.TextBox txtFileName;
+        private System.Windows.Forms.Button btnFileTextToDll;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
